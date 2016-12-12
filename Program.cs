@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
+//using System;
+//using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+//using System.Linq;
+//using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -15,6 +15,8 @@ namespace blqlik
             var config = new ConfigurationBuilder()
                 .AddCommandLine(args)
                 .AddEnvironmentVariables(prefix: "ASPNETCORE_")
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("hosting.json", optional: true)
                 .Build();
 
             var host = new WebHostBuilder()
